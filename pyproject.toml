@@ -1,0 +1,42 @@
+[project]
+name = "eventyay-flowspace"
+dynamic = ["version"]
+description = "This plugin allows you to integrate Flowspace with your events"
+readme = "README.rst"
+license = {file = "LICENSE"}
+keywords = ["Eventyay"]
+authors = [
+    {name = "FOSSASIA", email = "support@fossasia.org"},
+]
+maintainers = [
+    {name = "FOSSASIA", email = "support@fossasia.org"},
+]
+
+dependencies = [
+]
+
+[project.entry-points."pretix.plugin"]
+flowspace = "flowspace:PretixPluginMeta"
+
+[project.entry-points."distutils.commands"]
+build = "pretix_plugin_build.build:CustomBuild"
+
+[build-system]
+requires = [
+    "setuptools",
+    "pretix-plugin-build",
+]
+
+[project.urls]
+homepage = "https://github.com/fossasia/eventyay-flowspace.git"
+repository = "https://github.com/fossasia/eventyay-flowspace.git"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.dynamic]
+version = {attr = "flowspace.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["flowspace*"]
+namespaces = false
